@@ -1,4 +1,4 @@
-def creeaza_cheltuiala(nr_apartament, suma, data, tip):
+def creeaza_cheltuiala(nr_apartament: int, suma, data, tip):
     """
     Creeaza un dictionar cu o cheltuiala
     :param nr_apartament:numarul apartamentului, nenul

@@ -1,7 +1,8 @@
 from Domain.cheltuiala import creeaza_cheltuiala, get_nr_ap
 
 
-def adauga(lista, nr_apartament, suma, data, tip):
+def adauga(lista,
+           nr_apartament: int, suma, data, tip):
     """
     Adauga o cheltuiala intr-o lista.
     :param lista: lista de cheltuieli
@@ -13,7 +14,7 @@ def adauga(lista, nr_apartament, suma, data, tip):
     """
     cheltuiala = creeaza_cheltuiala(nr_apartament, suma, data, tip)
     return lista + [cheltuiala]
-def citire(lista, nr_apartament=None):
+def citire(lista, nr_apartament: int=None):
     """
     Citeste o cheltuiala din "baza de date"
     :param lista: lista de cheltuieli
@@ -44,7 +45,7 @@ def modificare(lista, new_cheltuiala):
             new_cheltuieli.append(new_cheltuiala)
     return new_cheltuieli
 
-def stergere(lista, nr_apartament):
+def stergere(lista, nr_apartament: int):
     """
     Sterge o cheltuiala din "baza de date"
     :param lista: lista de cheltuieli
