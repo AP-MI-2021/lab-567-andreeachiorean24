@@ -8,7 +8,7 @@ def get_data():
     return [
         creeaza_cheltuiala(2, 100, datetime.date(2021, 9, 5), 'canal'),
         creeaza_cheltuiala(3, 120, datetime.date(2021, 6, 4), 'canal'),
-        creeaza_cheltuiala(4, 200, datetime.date(2021, 5, 3), 'canal'),
+        creeaza_cheltuiala(4, 200, datetime.date(2021, 5, 3), 'alte cheltuieli'),
     ]
 
 def test_adauga():
@@ -28,7 +28,7 @@ def test_citire():
 
 def test_modificare():
     cheltuieli = get_data()
-    c_modificata = creeaza_cheltuiala(1, 200, datetime.date(2021, 2, 4), 'alte cheltuieli')
+    c_modificata = creeaza_cheltuiala(2, 200, datetime.date(2021, 2, 4), 'alte cheltuieli')
     modificata = modificare(cheltuieli, c_modificata)
     assert c_modificata in modificata
     assert c_modificata not in cheltuieli
