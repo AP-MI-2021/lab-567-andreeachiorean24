@@ -7,19 +7,19 @@ def creeaza_cheltuiala(nr_apartament: int, suma, data, tip):
     :param tip:tipul cheltuielii
     :return:o cheltuiala
     """
-    return{
-        'nr_ap': nr_apartament,
-        'suma': suma,
-        'data': data,
-        'tip': tip,
-    }
+    return[
+        nr_apartament,
+        suma,
+        data,
+        tip,
+    ]
 def get_nr_ap(cheltuiala):
     """
     Getter pt nr apartamentului
     :param cheltuiala: cheltuiala
     :return: nr apartamentului dat ca parametru
     """
-    return cheltuiala['nr_ap']
+    return cheltuiala[0]
 
 def get_suma(cheltuiala):
     """
@@ -27,14 +27,14 @@ def get_suma(cheltuiala):
     :param cheltuiala:  cheltuiala
     :return: suma cheltuielii data ca parametru
     """
-    return cheltuiala['suma']
+    return cheltuiala[1]
 def get_data(cheltuiala):
     """
     Getter pt data cheltuielii
     :param cheltuiala: cheltuiala
     :return: data cheltuielii data ca parametru
     """
-    return cheltuiala['data']
+    return cheltuiala[2]
 
 def get_tip(cheltuiala):
     """
@@ -42,7 +42,7 @@ def get_tip(cheltuiala):
     :param cheltuiala: cheltuiala
     :return: tipul cheltuielii dat ca parametru: intretinere, canal, alte cheltuieli
     """
-    return cheltuiala['tip']
+    return cheltuiala[3]
 
 def get_str(cheltuiala):
     return  f'cheltuiala din apartamentu {get_nr_ap(cheltuiala)}, cu suma de {get_suma(cheltuiala)}, din data de {get_data(cheltuiala)}, tipul {get_tip(cheltuiala)}'
