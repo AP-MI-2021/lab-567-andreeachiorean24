@@ -19,6 +19,12 @@ def test_adauga():
     assert len(new_cheltuieli) == len(cheltuieli) + 1
 
     assert c_new in new_cheltuieli
+    params2 = (100, 34, 22, datetime.date(2020, 3, 2), 'canal')
+    try:
+        some_p = adauga(new_cheltuieli, *params2)
+        assert False
+    except ValueError:
+        assert True
 
 def test_citire():
     cheltuieli = get_data()
