@@ -1,19 +1,19 @@
 import datetime
 
-from Domain.cheltuiala import creeaza_cheltuiala, get_nr_ap
+from Domain.cheltuiala import creeaza_cheltuiala, get_nr_ap, get_id
 from Logic.crud import adauga, citire, modificare, stergere
 
 
 def get_data():
     return [
-        creeaza_cheltuiala(2, 100, datetime.date(2021, 9, 5), 'canal'),
-        creeaza_cheltuiala(3, 120, datetime.date(2021, 6, 4), 'canal'),
-        creeaza_cheltuiala(4, 200, datetime.date(2021, 5, 3), 'alte cheltuieli'),
+        creeaza_cheltuiala(2, 5, 100, datetime.date(2021, 9, 5), 'canal'),
+        creeaza_cheltuiala(3, 4, 120, datetime.date(2021, 6, 4), 'canal'),
+        creeaza_cheltuiala(4, 6, 200, datetime.date(2021, 5, 3), 'alte cheltuieli'),
     ]
 
 def test_adauga():
     cheltuieli = get_data()
-    params = (100, 250, datetime.date(2021, 9, 7), 'intretinere')
+    params = (100, 50, 250, datetime.date(2021, 9, 7), 'intretinere')
     c_new = creeaza_cheltuiala(*params)
     new_cheltuieli = adauga(cheltuieli, *params)
     assert len(new_cheltuieli) == len(cheltuieli) + 1
@@ -23,12 +23,12 @@ def test_adauga():
 def test_citire():
     cheltuieli = get_data()
     some_c = cheltuieli[2]
-    assert citire(cheltuieli, get_nr_ap(some_c)) == some_c
+    assert citire(cheltuieli, get_id(some_c)) == some_c
     assert citire(cheltuieli, None) == cheltuieli
 
 def test_modificare():
     cheltuieli = get_data()
-    c_modificata = creeaza_cheltuiala(2, 200, datetime.date(2021, 2, 4), 'alte cheltuieli')
+    c_modificata = creeaza_cheltuiala(2, 50, 200, datetime.date(2021, 2, 4), 'alte cheltuieli')
     modificata = modificare(cheltuieli, c_modificata)
     assert c_modificata in modificata
     assert c_modificata not in cheltuieli

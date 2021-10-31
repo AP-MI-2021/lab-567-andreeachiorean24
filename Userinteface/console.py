@@ -19,24 +19,26 @@ def readDate():
 
 
 def handle_add(cheltuieli):
+    id_cheltuiala=int(input('Dati id-ul cheltuielii'))
     nr_apartament=int(input('Dati nr apartament'))
     suma=float(input('Dati suma cheltuielii'))
     data=readDate()
     tip=input('Dati tipul:')
-    return adauga(cheltuieli, nr_apartament, suma, data, tip)
+    return adauga(cheltuieli, id_cheltuiala, nr_apartament, suma, data, tip)
 
 
 def handle_update(cheltuieli):
+    id_cheltuiala = int(input('Dati id-ul cheltuielii care se actualizeaza'))
     nr_apartament = int(input('Dati nr apartament care se actualizeaza'))
     suma = float(input('Dati noua suma a cheltuielii'))
     data = readDate()
     tip = input('Dati noul tip:')
-    return modificare(cheltuieli, creeaza_cheltuiala(nr_apartament, suma, data, tip))
+    return modificare(cheltuieli, creeaza_cheltuiala(id_cheltuiala, nr_apartament, suma, data, tip))
 
 
 def handle_delete(cheltuieli):
-    nr_apartament = int(input('Dati nr apartament care se va sterge:'))
-    cheltuieli = stergere(cheltuieli, nr_apartament)
+    id_cheltuiala = int(input('Dati id-ul cheltuielii care se va sterge'))
+    cheltuieli = stergere(cheltuieli, id_cheltuiala)
     print('Stergerea a fost efectuata cu succes')
     return cheltuieli
 
