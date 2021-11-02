@@ -1,6 +1,7 @@
 import datetime
 from Logic.crud import adauga
 from Tests.test_crud import test_adauga, test_citire, test_modificare, test_stergere
+from Tests.test_functionalitati import test_adunarea_unei_val, test_stergerea_cheltuieliilor
 from Userinteface.console import run_ui
 
 
@@ -19,4 +20,6 @@ if __name__ == '__main__':
     test_citire()
     test_modificare()
     test_stergere()
+    test_stergerea_cheltuieliilor()
+    test_adunarea_unei_val()
     main()

@@ -1,4 +1,6 @@
 from Domain.cheltuiala import get_str, creeaza_cheltuiala
+from Logic import adunarea_unei_val_pt_data
+from Logic.adunarea_unei_val_pt_data import adunare_val
 from Logic.crud import adauga, modificare, stergere
 import datetime
 
@@ -8,7 +10,8 @@ from Logic.stergerea_cheltuieliilor import sterge_cheltuieli
 def show_menu():
     print('1. CRUD')
     print('2. Ștergerea tuturor cheltuielilor pentru un apartament ')
-    print('3. Iesire ')
+    print('3.  Adunarea unei valori la toate cheltuielile dintr-o dată citită.')
+    print('4. Iesire ')
 
 
 def readDate():
@@ -92,6 +95,19 @@ def handle_stergere_pt_ap(cheltuieli):
         print('Eroare:', ve)
     return cheltuieli
 
+
+def handle_adaugare_pt_data(cheltuieli):
+    try:
+        data = readDate()
+        valoare = float(input('Dati valoarea care se adauga'))
+        cheltuieli=adunare_val(cheltuieli, data, valoare)
+    except ValueError as ve:
+        print('Eroare:', ve)
+    return cheltuieli
+
+
+
+
 def run_ui(cheltuieli):
     while True:
         show_menu()
@@ -101,6 +117,8 @@ def run_ui(cheltuieli):
         elif optiune == '2':
             cheltuieli = handle_stergere_pt_ap(cheltuieli)
         elif optiune == '3':
+            cheltuieli = handle_adaugare_pt_data(cheltuieli)
+        elif optiune == '4':
             break
         else:
             print('Optiune invalida')

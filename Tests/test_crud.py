@@ -49,3 +49,5 @@ def test_stergere():
     assert c_stearsa in cheltuieli
     assert len(stearsa) == len(cheltuieli) - 1
 
+
+
