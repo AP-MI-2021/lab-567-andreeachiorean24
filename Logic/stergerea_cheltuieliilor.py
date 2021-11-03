@@ -16,4 +16,3 @@ def sterge_cheltuieli(nr_apartament, lista):
     if len(new) == len(lista):
         raise ValueError('Nu exista numarul de ap')
     return new
-

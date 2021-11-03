@@ -35,8 +35,6 @@ def handle_add(cheltuieli):
         print('Eroare:', ve)
 
     return cheltuieli
-
-
 def handle_update(cheltuieli):
     try:
         id_cheltuiala = int(input('Dati id-ul cheltuielii care se actualizeaza'))
@@ -94,8 +92,6 @@ def handle_stergere_pt_ap(cheltuieli):
     except ValueError as ve:
         print('Eroare:', ve)
     return cheltuieli
-
-
 def handle_adaugare_pt_data(cheltuieli):
     try:
         data = readDate()

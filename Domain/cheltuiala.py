@@ -29,7 +29,6 @@ def get_nr_ap(cheltuiala):
     :return: nr apartamentului dat ca parametru
     """
     return cheltuiala[1]
-
 def get_suma(cheltuiala):
     """
     Getter pt suma cheltuielii

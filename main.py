@@ -1,8 +1,9 @@
+
 import datetime
 from Logic.crud import adauga
 from Tests.test_crud import test_adauga, test_citire, test_modificare, test_stergere
 from Tests.test_functionalitati import test_adunarea_unei_val, test_stergerea_cheltuieliilor
-from Userinteface.console import run_ui
+from Userinterface.console import run_ui
 
 
 def main():

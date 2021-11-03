@@ -32,9 +32,3 @@ def test_adunarea_unei_val():
         assert False
     except ValueError:
         assert True
-
-
-
-
-
-
