@@ -3,7 +3,15 @@ import datetime
 from Logic.crud import adauga
 from Tests.test_crud import test_adauga, test_citire, test_modificare, test_stergere
 from Tests.test_functionalitati import test_adunarea_unei_val, test_stergerea_cheltuieliilor
+from Userinterface.command_line_console import run_in_line_console
 from Userinterface.console import run_ui
+
+
+
+def meniuri():
+    print('1.Meniul vechi')
+    print('2.Meniul nou')
+    print('x.Exit')
 
 
 def main():
@@ -14,7 +22,18 @@ def main():
     cheltuieli = adauga(cheltuieli, 5, 23, 540, datetime.date(2021, 3, 7), 'canal')
     cheltuieli = adauga(cheltuieli, 6, 23, 200, datetime.date(2021, 7, 9), 'intretinere')
     cheltuieli = adauga(cheltuieli, 7, 11, 30, datetime.date(2021, 6, 2), 'intretinere')
-    cheltuieli = run_ui(cheltuieli)
+    while True:
+        meniuri()
+        optiune = input('Alegeti interfata: ')
+        if optiune == '1':
+            run_ui(cheltuieli)
+        elif optiune == '2':
+            run_in_line_console(cheltuieli)
+        elif optiune == 'x':
+            break
+        else:
+            print('Optiune invalida')
+
 
 if __name__ == '__main__':
     test_adauga()
