@@ -4,14 +4,20 @@ from Logic.adunarea_unei_val_pt_data import adunare_val
 from Logic.crud import adauga, modificare, stergere
 import datetime
 
+from Logic.det_cea_mai_mare_chelt import mare_cheltuiala
+from Logic.ord_desc_dupa_suma import ord_desc
 from Logic.stergerea_cheltuieliilor import sterge_cheltuieli
+from Logic.sume_lunare_pt_ap import sume_pt_ap
 
 
 def show_menu():
     print('1. CRUD')
     print('2. Ștergerea tuturor cheltuielilor pentru un apartament ')
-    print('3.  Adunarea unei valori la toate cheltuielile dintr-o dată citită.')
-    print('4. Iesire ')
+    print('3. Adunarea unei valori la toate cheltuielile dintr-o dată citită.')
+    print('4. Determinarea celei mai mari cheltuieli pentru fiecare tip de cheltuială.')
+    print('5. Ordonarea cheltuielilor descrescător după sumă. ')
+    print('6. Afișarea sumelor lunare pentru fiecare apartament.')
+    print('7. Iesire ')
 
 
 def readDate():
@@ -102,6 +108,25 @@ def handle_adaugare_pt_data(cheltuieli):
     return cheltuieli
 
 
+def handle_cea_mai_mare_cheltuiala(cheltuieli):
+    new = mare_cheltuiala(cheltuieli)
+    for tip in new:
+        print(f'Pentru tipul: {tip} avem cheltuiala: {get_str(new[tip])}')
+
+
+def handle_ord(cheltuieli):
+    lista = ord_desc(cheltuieli)
+    print('Cheltuieliile au fost ordonate')
+    return lista
+
+
+def handle_sume_lunare(cheltuieli):
+    new = sume_pt_ap(cheltuieli)
+    for luna in new:
+        print(f'Pentru Luna {luna} avem lista de sume: {new[luna]}')
+
+
+
 
 
 def run_ui(cheltuieli):
@@ -115,6 +140,12 @@ def run_ui(cheltuieli):
         elif optiune == '3':
             cheltuieli = handle_adaugare_pt_data(cheltuieli)
         elif optiune == '4':
+            cheltuieli = handle_cea_mai_mare_cheltuiala(cheltuieli)
+        elif optiune == '5':
+            cheltuieli = handle_ord(cheltuieli)
+        elif optiune == '6':
+            cheltuieli = handle_sume_lunare(cheltuieli)
+        elif optiune == '7':
             break
         else:
             print('Optiune invalida')
