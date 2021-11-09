@@ -1,7 +1,7 @@
 from Domain.cheltuiala import get_data, get_suma, get_id, get_nr_ap, get_tip, creeaza_cheltuiala
 
 
-def adunare_val(lista, data, valoare):
+def adunare_val(lista, data, valoare, undo_list, redo_list):
     """
      Adunarea unei valori la toate cheltuielile dintr-o dată citită.
     :param lista: lista cu cheltuieli
@@ -25,4 +25,6 @@ def adunare_val(lista, data, valoare):
             new_list.append(cheltuiala)
     if verificare == False:
         raise ValueError('Nu exista data citita')
+    undo_list.append(lista)
+    redo_list.clear()
     return new_list

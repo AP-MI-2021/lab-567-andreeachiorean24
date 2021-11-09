@@ -1,7 +1,7 @@
 from Domain.cheltuiala import get_nr_ap
 
 
-def sterge_cheltuieli(nr_apartament, lista):
+def sterge_cheltuieli(nr_apartament, lista, undo_list, redo_list):
     """
     Ștergerea tuturor cheltuielilor pentru un apartament dat
     :param nr_apartament: nr ap care se sterge
@@ -15,4 +15,8 @@ def sterge_cheltuieli(nr_apartament, lista):
 
     if len(new) == len(lista):
         raise ValueError('Nu exista numarul de ap')
+
+    undo_list.append(lista)
+    redo_list.clear()
+
     return new
