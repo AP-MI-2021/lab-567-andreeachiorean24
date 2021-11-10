@@ -12,8 +12,8 @@ def adauga(lista,
     :param suma:suma cheltuielii
     :param data:data cheltuielii
     :param tip:tipul cheltuielii
-    :param undo_list:
-    :param redo_list:
+    :param undo_list: Lista de liste de cheltuieli, modificata in urma apelarii fiecarei functionalitati
+    :param redo_list: Lista de liste, modificata in urma apelarii fiecarei Undo, sau devine lista vida cand apelam o alta functionalitate
     :return: o noua lista cu cheltuiala noua adaugata
     """
     if citire(lista, id_cheltuiala) is not None:
@@ -52,8 +52,8 @@ def modificare(lista, new_cheltuiala, undo_list, redo_list):
     Modifica o cheltuiala
     :param lista: lista cu cheltuieli
     :param new_cheltuiala: cheltuiala care se va modifica, nr_apartament trebuie sa fie unul existent
-    :param undo_list:
-    :param redo_list:
+    :param undo_list: Lista de liste de cheltuieli, modificata in urma apelarii fiecarei functionalitati
+    :param redo_list: Lista de liste, modificata in urma apelarii fiecarei Undo, sau devine lista vida cand apelam o alta functionalitate
     :return: o lista cu cheltuiala modificata
     """
     if citire(lista, get_id(new_cheltuiala)) is None:
@@ -76,8 +76,8 @@ def stergere(lista, id_cheltuiala:int, undo_list, redo_list):
     :param lista: lista de cheltuieli
     :param id_cheltuiala: id-ul cheltuielii
     :param nr_apartament: numarul ap cheltuielii
-    :param undo_list:
-    :param redo_list:
+    :param undo_list: Lista de liste de cheltuieli, modificata in urma apelarii fiecarei functionalitati
+    :param redo_list: Lista de liste, modificata in urma apelarii fiecarei Undo, sau devine lista vida cand apelam o alta functionalitate
     :return: o lista de cheltuieli fara cheltuiala cu nr ap nr_apartament
     """
     if citire(lista, id_cheltuiala) is None:

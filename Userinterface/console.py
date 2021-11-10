@@ -53,7 +53,7 @@ def handle_update(cheltuieli, undo_list, redo_list):
         data = readDate()
         tip = input('Dati noul tip:')
         new_cheltuiala = creeaza_cheltuiala(id_cheltuiala, nr_apartament, suma, data, tip)
-        cheltuieli = modificare(cheltuieli, creeaza_cheltuiala(id_cheltuiala, nr_apartament, suma, data, tip, undo_list, redo_list))
+        cheltuieli = modificare(cheltuieli, new_cheltuiala, undo_list, redo_list)
     except ValueError as ve:
         print('Eroare:', ve)
     return cheltuieli

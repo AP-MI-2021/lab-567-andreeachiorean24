@@ -2,6 +2,7 @@ import datetime
 
 from Domain.cheltuiala import creeaza_cheltuiala, get_nr_ap, get_id
 from Logic.crud import adauga, citire, modificare, stergere
+from Logic.stergerea_cheltuieliilor import sterge_cheltuieli
 
 
 def get_data():
@@ -48,3 +49,5 @@ def test_stergere():
     assert c_stearsa not in stearsa
     assert c_stearsa in cheltuieli
     assert len(stearsa) == len(cheltuieli) - 1
+
+

@@ -25,6 +25,7 @@ def main():
     cheltuieli = adauga(cheltuieli, 5, 23, 540, datetime.date(2021, 3, 7), 'canal', undo_list, redo_list)
     cheltuieli = adauga(cheltuieli, 6, 23, 200, datetime.date(2021, 7, 9), 'intretinere', undo_list, redo_list)
     cheltuieli = adauga(cheltuieli, 7, 11, 30, datetime.date(2021, 6, 2), 'intretinere', undo_list, redo_list)
+
     while True:
         meniuri()
         optiune = input('Alegeti interfata: ')

@@ -24,7 +24,7 @@ def add(lista, id_ap, nr_ap, suma, data, tip):
         print('Eroare: ', ve)
     try:
         new_cheltuiala = creeaza_cheltuiala(id_ap, nr_ap, suma, data, tip)
-        lista = adauga(lista, id_ap, nr_ap, suma, data, tip)
+        lista = adauga(lista, id_ap, nr_ap, suma, data, tip, [], [])
     except ValueError as ve:
         print('Eroare:', ve)
     return lista
@@ -37,7 +37,7 @@ def delete(lista, id_ap):
         print('Eroare: ', ve)
         return lista
     try:
-        lista = stergere(lista, id_ap)
+        lista = stergere(lista, id_ap, [], [])
     except ValueError as ve:
         print('Eroare:', ve)
     return lista

@@ -7,6 +7,8 @@ def adunare_val(lista, data, valoare, undo_list, redo_list):
     :param lista: lista cu cheltuieli
     :param data:data citita
     :param valoare:valoarea care se adauga
+    :param undo_list: Lista de liste de cheltuieli, modificata in urma apelarii fiecarei functionalitati
+    :param redo_list: Lista de liste, modificata in urma apelarii fiecarei Undo, sau devine lista vida cand apelam o alta functionalitate
     :return:lista noua la care s a adaugat valoarea
     """
     verificare=False
