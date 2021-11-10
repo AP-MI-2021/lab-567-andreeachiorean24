@@ -70,3 +70,7 @@ def test_undo_redo():
     assert new == None
     new = do_redo(undo_list, redo_list, new)
     assert len(new) == len(cheltuieli) + 1
+
+
+
+
