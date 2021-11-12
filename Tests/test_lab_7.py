@@ -1,5 +1,12 @@
+from datetime import datetime, date
+
+from Domain.cheltuiala import get_suma
+from Logic.adunarea_unei_val_pt_data import adunare_val
 from Logic.crud import adauga
+from Logic.ord_desc_dupa_suma import ord_desc
+from Logic.stergerea_cheltuieliilor import sterge_cheltuieli
 from Logic.undo_redo import do_undo, do_redo
+from Tests.test_crud import get_data
 
 
 def test_lab_7():
@@ -23,10 +30,15 @@ def test_lab_7():
     assert do_redo(undo_list, redo_list, cheltuieli) is None
     assert len(cheltuieli) == 3
     cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 2
     cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 1
     cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 2
     cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 3
     cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 2
     cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
     assert len(cheltuieli) == 1
     cheltuieli = adauga(cheltuieli, 4, 6, 266, 2021-4-6, 'alte cheltuieli', undo_list, redo_list)
@@ -34,10 +46,50 @@ def test_lab_7():
     cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
     assert len(cheltuieli) == 1
     cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 0
     cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 1
     cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
     assert len(cheltuieli) == 2
     assert do_redo(undo_list, redo_list, cheltuieli) is None
+
+def test_stergerea_cheltuieliilor_undo_redo():
+    cheltuieli = get_data()
+    undo_list = []
+    redo_list = []
+    cheltuieli = sterge_cheltuieli(5, cheltuieli, undo_list, redo_list)
+    assert len(cheltuieli) == 2
+    cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 3
+    cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
+    assert len(cheltuieli) == 2
+    assert do_redo(undo_list, redo_list, cheltuieli) is None
+
+def test_adunare_val_undo_redo():
+    cheltuieli = get_data()
+    undo_list = []
+    redo_list = []
+    cheltuieli = adunare_val(cheltuieli, date(2021, 9, 5), 50, undo_list, redo_list)
+    assert get_suma(cheltuieli[0]) == 150
+    cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert get_suma(cheltuieli[0]) == 100
+    cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
+    assert get_suma(cheltuieli[0]) == 150
+    assert do_redo(undo_list, redo_list, cheltuieli) is None
+
+def test_ord_desc_undo_redo():
+    cheltuieli = get_data()
+    undo_list = []
+    redo_list = []
+    cheltuieli = ord_desc(cheltuieli, undo_list, redo_list)
+    assert get_suma(cheltuieli[0]) == 200
+    cheltuieli = do_undo(undo_list, redo_list, cheltuieli)
+    assert get_suma(cheltuieli[0]) == 100
+    cheltuieli = do_redo(undo_list, redo_list, cheltuieli)
+    assert get_suma(cheltuieli[0]) == 200
+    assert do_redo(undo_list, redo_list, cheltuieli) is None
+
+
 
 
 

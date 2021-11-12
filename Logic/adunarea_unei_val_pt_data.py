@@ -14,9 +14,9 @@ def adunare_val(lista, data, valoare, undo_list, redo_list):
     verificare=False
     if valoare<0:
         raise ValueError('Valoarea trebuie sa fie un nr pozitiv')
-    new_list=[]
+    new_list = []
     for cheltuiala in lista:
-        if get_data(cheltuiala)== data:
+        if get_data(cheltuiala) == data:
             verificare = True
             suma_noua=get_suma(cheltuiala) + valoare
             id = get_id(cheltuiala)
